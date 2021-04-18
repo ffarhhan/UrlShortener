@@ -1,2 +1,16 @@
-<h1>UrlShortener#new</h1>
-<p>Find me in app/views/url_shortener/new.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="form-group">
+      <div>
+        <h1>Welcome to short.com</h1>
+        <p>Please enter your URL here</p>
+      </div>
+      <%= form_for :url, url: url_shortener_create_path do |form| %>
+        <%= form.text_field :url, class:"form-control" %>
+        <br/>
+        <%= form.submit "SHORTEN", class:"btn btn-primary" %>
+      <% end %>
+    <div>
+  <div>
+<div>
