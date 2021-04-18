@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: url_shortener_dev
+  host: localhost
+  timeout: 5000
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  database: url_shortener_prod
+  host: localhost
+  timeout: 5000
+
