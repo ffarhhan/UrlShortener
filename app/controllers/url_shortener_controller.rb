@@ -5,9 +5,9 @@ class UrlShortenerController < ApplicationController
 
   def create
     @new_url = Url.new(url_params)
-    host = "https://aqueous-tor-85493.herokuapp.com/"
+    host = Rails.env == "production" ? "https://aqueous-tor-85493.herokuapp.com" : "http://localhost:3000"
     begin
-      shorten_key = Shortener::ShortenedUrl.generate(@new_url.url).unique_key
+      shorten_key = Shortener::ShortenedUrl.generate(@new_url.url, expires_at: 30.days.since).unique_key
       shorten_url = "#{host}/#{shorten_key}"
     rescue Exception => e
       puts e
