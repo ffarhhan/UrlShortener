@@ -9,8 +9,8 @@
           <h3><%=url.url%></h3>
           <h5><%=url.shorten_url%></h5>
           <p><b>Total clicks:</b> <%=url.clicked%> </p>
-          <p><b>Top Countries:</b> <%=url.addresses&.pluck(:city)%> </p>
-          <p><b>IP Addresses:</b> <%=url.addresses&.pluck(:ip_address)%> </p>
+          <p><b>Top Countries:</b> <%=url.addresses&.pluck(:city).uniq.join(',')%> </p>
+          <p><b>IP Addresses:</b> <%=url.addresses&.pluck(:ip_address).uniq.join(',')%> </p>
           <hr>
         <% end %>
       </div>
