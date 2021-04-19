@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_124906) do
+ActiveRecord::Schema.define(version: 2021_04_19_144443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "ip_address"
+    t.bigint "url_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["url_id"], name: "index_addresses_on_url_id"
+  end
 
   create_table "shortened_urls", id: :serial, force: :cascade do |t|
     t.integer "owner_id"
@@ -40,4 +49,5 @@ ActiveRecord::Schema.define(version: 2021_04_19_124906) do
     t.string "uuid"
   end
 
+  add_foreign_key "addresses", "urls"
 end
