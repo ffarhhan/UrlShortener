@@ -6,11 +6,17 @@
         <h1>Welcome to short.com</h1>
         <p>Please enter your URL here</p>
       </div>
-      <%= form_for :url, url: url_shortener_create_path do |form| %>
-        <%= form.text_field :url, class:"form-control" %>
+      <%= form_for @url, url: 'url_shortener/create', remote:true do|form| %>
+        <%= form.text_field :url, class:"form-control", required: true  %>
         <br/>
+        <p>* Please don't use <b>https://</b> in the URL</p>
         <%= form.submit "SHORTEN", class:"btn btn-primary" %>
       <% end %>
+      <br/>
+      <div id="generatedUrl" class="d-none">
+        <p>Here's your short URL!</p>
+        <b><p id="shortenedUrl"></p></b>
+      </div>
     <div>
   <div>
 <div>

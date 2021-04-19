@@ -1,0 +1,4 @@
+<% if @new_url%>
+   document.getElementById("shortenedUrl").innerHTML = ("<%=@new_url.shorten_url%>");
+   document.getElementById("generatedUrl").classList.remove("d-none");
+<% end %>
