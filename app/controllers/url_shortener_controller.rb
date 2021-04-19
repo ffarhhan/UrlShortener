@@ -14,11 +14,7 @@ class UrlShortenerController < ApplicationController
     end
     @new_url.shorten_url = shorten_url
     @new_url.uuid = shorten_key
-    if @new_url.save
-    else
-      flash[:error] = 'Please enter valid URL'
-      redirect_to root_url
-    end
+    @new_url.save
   end
 
   def redirect
@@ -46,7 +42,6 @@ class UrlShortenerController < ApplicationController
     @url.update(clicked: @url.clicked + 1)
     @url.addresses.create(ip_address: request.remote_ip,city: request.location.city  )
   end
-
 
   def url_params
     params.require(:url).permit(:url)
